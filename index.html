@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<title>PDF Annotation And Drawing Markup Plugin Example</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
 	<link rel="stylesheet" href="./styles.css">
@@ -10,9 +10,6 @@
 </head>
 <body>
 <div class="toolbar">
-	<div class="tool">
-		<span>PDFJS + FabricJS + jsPDF</span>
-	</div>
 	<div class="tool">
 		<label for="">Brush size</label>
 		<input type="number" class="form-control text-right" value="1" id="brush-size" max="50">
@@ -33,17 +30,30 @@
 		</select>
 	</div>
 	<div class="tool">
+		<button class="tool-button"><i class="fa fa-pencil" title="Pencil" onclick="enablePencil(event)"></i></button>
+	</div>
+	<div class="tool">
 		<button class="color-tool active" style="background-color: #212121;"></button>
 		<button class="color-tool" style="background-color: red;"></button>
 		<button class="color-tool" style="background-color: blue;"></button>
 		<button class="color-tool" style="background-color: green;"></button>
 		<button class="color-tool" style="background-color: yellow;"></button>
+		<button class="color-tool" style="background-color: pink;"></button>
+		<button class="color-tool" style="background-color: brown;"></button>
+		<button class="color-tool" style="background-color: teal;"></button>
+		<button class="color-tool" style="background-color: orange;"></button>
+		<button class="color-tool" style="background-color: purple;"></button>
+		<button class="color-tool" style="background-color: aqua;"></button>
+		<button class="color-tool" style="background-color: burlywood;"></button>
+		<button class="color-tool" style="background-color: indigo;"></button>
+		<button class="color-tool" style="background-color: lawngreen;"></button>
+		<button class="color-tool" style="background-color: maroon;"></button>
+		<button class="color-tool" style="background-color: navy;"></button>
+		<button class="color-tool" style="background-color: violet;"></button>
+		<button class="color-tool" style="background-color: wheat;"></button>
 	</div>
 	<div class="tool">
 		<button class="tool-button active"><i class="fa fa-hand-paper-o" title="Free Hand" onclick="enableSelector(event)"></i></button>
-	</div>
-	<div class="tool">
-		<button class="tool-button"><i class="fa fa-pencil" title="Pencil" onclick="enablePencil(event)"></i></button>
 	</div>
 	<div class="tool">
 		<button class="tool-button"><i class="fa fa-font" title="Add Text" onclick="enableAddText(event)"></i></button>
@@ -58,16 +68,13 @@
 		<button class="tool-button"><i class="fa fa-picture-o" title="Add an Image" onclick="addImage(event)"></i></button>
 	</div>
 	<div class="tool">
-		<button class="btn btn-danger btn-sm" onclick="deleteSelectedObject(event)"><i class="fa fa-trash"></i></button>
+		<button class="btn btn-danger dng-button" onclick="deleteSelectedObject(event)"><i class="fa fa-trash"></i></button>
 	</div>
 	<div class="tool">
-		<button class="btn btn-danger btn-sm" onclick="clearPage()">Clear Page</button>
+		<button class="btn btn-danger dng-button" onclick="clearPage()">Clear</button>
 	</div>
 	<div class="tool">
-		<button class="btn btn-info btn-sm" onclick="showPdfData()">{}</button>
-	</div>
-	<div class="tool">
-		<button class="btn btn-light btn-sm" onclick="savePDF()"><i class="fa fa-save"></i> Save</button>
+		<button class="btn btn-light dng-button" onclick="savePDF()" style="font-size: larger;padding-top: 0px;"><i class="fa fa-save"></i></button>
 	</div>
 </div>
 <div id="pdf-container"></div>
@@ -89,8 +96,8 @@
 	</div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
 <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js';</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.3.0/fabric.min.js"></script>
@@ -100,5 +107,19 @@
 <script src="./arrow.fabric.js"></script>
 <script src="./pdfannotate.js"></script>
 <script src="./script.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 </body>
 </html>
