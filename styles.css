@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(82, 86, 89);
+    background-color: /* rgb(82, 86, 89); */rgba(237, 237, 240, 1);
     line-height: 1.8;
 }
 
@@ -51,16 +51,16 @@ button:focus {
     height: auto !important;
     padding: 0;
     color: black;
-    font-size: smaller;
+    font-size: 13px;
     text-align: center!important;
 }
 .toolbar .tool select {
     width: 38px;
-    font-size: smaller;
+    font-size: 13px;
 }
 .toolbar .tool input {
     width: 38px;
-    font-size: smaller;
+    font-size: 13px;
 }
 
 .dng-button {
