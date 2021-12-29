@@ -33,24 +33,24 @@
 		<button class="tool-button"><i class="fa fa-pencil" title="Pencil" onclick="enablePencil(event)"></i></button>
 	</div>
 	<div class="tool">
-		<button class="color-tool active" style="background-color: #212121;"></button>
-		<button class="color-tool" style="background-color: red;"></button>
-		<button class="color-tool" style="background-color: blue;"></button>
-		<button class="color-tool" style="background-color: green;"></button>
-		<button class="color-tool" style="background-color: yellow;"></button>
-		<button class="color-tool" style="background-color: pink;"></button>
-		<button class="color-tool" style="background-color: brown;"></button>
-		<button class="color-tool" style="background-color: teal;"></button>
-		<button class="color-tool" style="background-color: orange;"></button>
-		<button class="color-tool" style="background-color: purple;"></button>
-		<button class="color-tool" style="background-color: aqua;"></button>
-		<button class="color-tool" style="background-color: burlywood;"></button>
-		<button class="color-tool" style="background-color: indigo;"></button>
-		<button class="color-tool" style="background-color: lawngreen;"></button>
-		<button class="color-tool" style="background-color: maroon;"></button>
-		<button class="color-tool" style="background-color: navy;"></button>
-		<button class="color-tool" style="background-color: violet;"></button>
-		<button class="color-tool" style="background-color: wheat;"></button>
+		<button title="black" class="color-tool active" style="background-color: #212121;"></button>
+		<button title="red" class="color-tool" style="background-color: red;"></button>
+		<button title="blue" class="color-tool" style="background-color: blue;"></button>
+		<button title="green" class="color-tool" style="background-color: green;"></button>
+		<button title="yellow" class="color-tool" style="background-color: yellow;"></button>
+		<button title="pinl" class="color-tool" style="background-color: pink;"></button>
+		<button title="brown" class="color-tool" style="background-color: brown;"></button>
+		<button title="teal" class="color-tool" style="background-color: teal;"></button>
+		<button title="orange" class="color-tool" style="background-color: orange;"></button>
+		<button title="purple" class="color-tool" style="background-color: purple;"></button>
+		<button title="aqua" class="color-tool" style="background-color: aqua;"></button>
+		<button title="burlywood" class="color-tool" style="background-color: burlywood;"></button>
+		<button title="indigo" class="color-tool" style="background-color: indigo;"></button>
+		<button title="lawngreen" class="color-tool" style="background-color: lawngreen;"></button>
+		<button title="maroon" class="color-tool" style="background-color: maroon;"></button>
+		<button title="navy" class="color-tool" style="background-color: navy;"></button>
+		<button title="violet" class="color-tool" style="background-color: violet;"></button>
+		<button title="wheat" class="color-tool" style="background-color: wheat;"></button>
 	</div>
 	<div class="tool">
 		<button class="tool-button active"><i class="fa fa-hand-paper-o" title="Free Hand" onclick="enableSelector(event)"></i></button>
@@ -68,13 +68,13 @@
 		<button class="tool-button"><i class="fa fa-picture-o" title="Add an Image" onclick="addImage(event)"></i></button>
 	</div>
 	<div class="tool">
-		<button class="btn btn-danger dng-button" onclick="deleteSelectedObject(event)"><i class="fa fa-trash"></i></button>
+		<button class="btn btn-danger dng-button" onclick="deleteSelectedObject(event)"><i title="Delete selected Annotatin" class="fa fa-trash"></i></button>
 	</div>
 	<div class="tool">
-		<button class="btn btn-danger dng-button" onclick="clearPage()">Clear</button>
+		<button class="btn btn-danger dng-button"title="Clear Page Drawings"  onclick="clearPage()">Clear</button>
 	</div>
 	<div class="tool">
-		<button class="btn btn-light dng-button" onclick="savePDF()" style="font-size: larger;padding-top: 0px;"><i class="fa fa-save"></i></button>
+		<button class="btn btn-light dng-button" onclick="savePDF()" style="font-size: larger;padding-top: 0px;"><i title="Save" class="fa fa-save"></i></button>
 	</div>
 </div>
 <div id="pdf-container"></div>
