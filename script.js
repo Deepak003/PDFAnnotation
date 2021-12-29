@@ -1,13 +1,34 @@
-var pdf = new PDFAnnotate("pdf-container", "pdf.pdf", {
-  onPageUpdated(page, oldData, newData) {
-    console.log(page, oldData, newData);
-  },
-  ready() {
-    console.log("Plugin initialized successfully");
-  },
-  scale: 1.5,
-  pageImageCompression: "MEDIUM", // FAST, MEDIUM, SLOW(Helps to control the new PDF file size)
-});
+var pdf;
+const fileload = document.getElementById('file-input').files.length;
+
+if(fileload ==0){
+    pdf = new PDFAnnotate("pdf-container",'pdf.pdf', {
+
+        onPageUpdated(page, oldData, newData) {
+          console.log(page, oldData, newData);
+        },
+        ready() {
+          console.log("Plugin initialized successfully");
+        },
+        scale: 1.5,
+        pageImageCompression: "MEDIUM", // FAST, MEDIUM, SLOW(Helps to control the new PDF file size)
+    });
+}
+    
+function loadPDF(event){
+    document.getElementById('pdf-container').innerHTML='';
+    const file = URL.createObjectURL(document.getElementById('file-input').files[0]);
+    pdf = new PDFAnnotate("pdf-container",file, {
+        onPageUpdated(page, oldData, newData) {
+        console.log(page, oldData, newData);
+        },
+        ready() {
+        console.log("Plugin initialized successfully");
+        },
+        scale: 1.5,
+        pageImageCompression: "MEDIUM", // FAST, MEDIUM, SLOW(Helps to control the new PDF file size)
+    });
+}
 
 function changeActiveTool(event) {
     var element = $(event.target).hasClass("tool-button")
