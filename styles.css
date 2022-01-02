@@ -3,6 +3,29 @@ body {
     line-height: 1.8;
 }
 
+.center {
+    width: 80%;
+    padding: 20px;
+    box-shadow: 1px 4px 8px 0 rgb(0 0 0 / 20%), 1px 6px 20px 2px rgb(4 0 0);
+    top: 0;
+    margin-left: 10%;
+    margin-top: 3%;
+    height: 10%;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    z-index: 999;
+    background-color: rgba(249, 249, 250, 1);
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.hideform {
+    display: none;
+}
+
 canvas, .canvas-container {
     -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
@@ -11,7 +34,6 @@ canvas, .canvas-container {
 
 .toolbar {
     height: 35px;
-    position: relative;
     left: 0;
     right: 0;
     z-index: 9999;
@@ -39,8 +61,7 @@ button:focus {
     color: #fff;
     height: 100%;
     padding-top: 0px;
-    padding-left: 10px;
-    margin-right: 5px;
+    padding-left: 5px;
 }
 
 .toolbar .tool label,

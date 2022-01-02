@@ -1,6 +1,6 @@
 /**
  * PDFAnnotate v1.0.1
- * Author: Ravisha Heshan
+ * Author: DEEPAK TIWARI
  */
 
 var PDFAnnotate = function(container_id, url, options = {}) {
@@ -144,7 +144,7 @@ PDFAnnotate.prototype.enableRectangle = function () {
 			fabricObj.isDrawingMode = false;
 		});
 	}
-
+	console.log('enableRectangle color',this.color,inst.color);
 	var rect = new fabric.Rect({
 		width: 100,
 		height: 100,
@@ -158,6 +158,7 @@ PDFAnnotate.prototype.enableRectangle = function () {
 PDFAnnotate.prototype.enableAddArrow = function () {
 	var inst = this;
 	inst.active_tool = 3;
+	console.log('enableAddArrow color',this.color);
 	if (inst.fabricObjects.length > 0) {
 	    $.each(inst.fabricObjects, function (index, fabricObj) {
 	        fabricObj.isDrawingMode = false;

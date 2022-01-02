@@ -80,9 +80,19 @@
 		<input style="display: none;cursor: pointer;" id="file-input" type="file" onchange="loadPDF();"/>
 	</div>
 	<div class="tool">
-		<button class="btn btn-light dng-button" onclick="savePDF()" style="font-size: larger;padding-top: 0px;"><i title="Save" class="fa fa-save"></i></button>
+		<button id="show" class="tool-button"><i class="fa fa-external-link" title="Open a Web Page PDF" ></i></button>
+	</div>
+	<div class="center hideform">
+		<button id="close" class="tool-button" style="float: right;"><i class="fa fa-window-close" color="red" title="Close popup" ></i></button>
+			Web Page URL:<br>
+			<input id="webpageurlVal" type="text" style="width:75%;" name="webpageurl" value="" placeholder="https://">
+			<button id="generatePDF" class="tool-button" onclick="addURL();">Web2PDF</button>
+	</div>
+	<div class="tool">
+		<button class="btn btn-light dng-button" onclick="savePDF()" style="font-size: larger;padding-top: 0px;float:right;"><i title="Save" class="fa fa-save"></i></button>
 	</div>
 </div>
+
 <div id="pdf-container"></div>
 
 <div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="dataModalLabel" aria-hidden="true">
