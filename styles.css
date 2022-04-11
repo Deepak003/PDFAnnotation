@@ -33,7 +33,7 @@ canvas, .canvas-container {
 }
 
 .toolbar {
-    height: 35px;
+    height: 55px;
     left: 0;
     right: 0;
     z-index: 9999;
@@ -57,10 +57,10 @@ button:focus {
 }
 
 .toolbar .tool {
-    display: inline-block;
+    display: inline-table;
     color: #fff;
     height: 100%;
-    padding-top: 0px;
+    padding-top: 7px;
     padding-left: 5px;
 }
 
@@ -70,18 +70,17 @@ button:focus {
     display: inline-block;
     width: auto;
     height: auto !important;
-    padding: 0;
+    padding-left: 10px;
     color: black;
-    font-size: 13px;
     text-align: center!important;
+    font-size: 18px;
 }
 .toolbar .tool select {
-    width: 38px;
-    font-size: 13px;
+    font-size: 18px;
 }
 .toolbar .tool input {
     width: 38px;
-    font-size: 13px;
+    font-size: 18px;
 }
 
 .dng-button {
@@ -91,8 +90,8 @@ button:focus {
     border-radius: 0.2rem;
 }
 .toolbar .tool .color-tool {
-    height: 12px;
-    width: 2px;
+    height: 22px;
+    width: 22px;
     border-radius: 25px;
     border: 0;
     cursor: pointer;
@@ -107,6 +106,9 @@ button:focus {
 
 .toolbar .tool:nth-last-child(1) {
     float: right;
+    padding-top: 10px;
+    padding-right: 10px;
+    font-size: 18px;
 }
 
 .toolbar .tool .tool-button {
@@ -114,6 +116,7 @@ button:focus {
     border: 1px rgb(50, 54, 57);
     /* color: #fff; */
     cursor: pointer;
+    font-size:18px;
 }
 
 .toolbar .tool .tool-button:hover,
