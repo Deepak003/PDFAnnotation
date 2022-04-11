@@ -4,11 +4,11 @@ body {
 }
 
 .center {
-    width: 80%;
+    width: 40%;
     padding: 20px;
     box-shadow: 1px 4px 8px 0 rgb(0 0 0 / 20%), 1px 6px 20px 2px rgb(4 0 0);
     top: 0;
-    margin-left: 10%;
+    margin-left: 30%;
     margin-top: 3%;
     height: 10%;
     position: fixed;
