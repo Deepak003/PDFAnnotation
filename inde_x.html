@@ -33,7 +33,7 @@ body{
 	position: fixed;
 	top: 0;
 	left: 0;
-	width: 90px;
+	width: 107px;
 	height: 100%;
 	transition: all 0.5s ease;
     z-index: 999;
@@ -41,11 +41,13 @@ body{
 
 .wrapper .sidebar .profile{
 	text-align: center;
+    background-color: black;
 }
 
 .wrapper .sidebar .profile img{
 	display: block;
-	width: 65px;
+	width: 100px;
+	height: 100px;
     border-radius: 50%;
 	margin: 0 auto;
 }
@@ -97,17 +99,17 @@ body{
 }
 
 .wrapper .section{
-	width: calc(100% -25px);
-	margin-left: calc(100% - 270px);
+	width: calc(100% - 25px);
+	margin-left: 225px;
 	transition: all 0.5s ease;
 }
 
 .wrapper .section .top_navbar{
-	background: white;
+	background: rgb(197 196 192);
 	height: 50px;
 	display: flex;
-	align-items: flex-start;
-	padding: 0 5px;
+	align-items: center;
+	padding: 0 30px;
  
 }
 
@@ -142,26 +144,10 @@ body.active .wrapper .section{
                     <a href="#">
                         <i style="color:black" class="fas fa-bars"></i>
                     </a>
-                 </div>
-                 <div style="padding-left: 80px;">    
                     <a href="#">
                         <span class="item">
-                            <div class="tool" >
-                                <button class="btn btn-light dng-button" onclick="savePDF()" style="font-size: small;padding-top: 0px;float:right;"><i title="Save" class="fa fa-save"></i></button>
-                            </div>
-                        </span>
-                    </a>
-                    <a href="#">
-                        <span class="item">
-                            <div class="tool" >
-                                <button class="btn btn-danger dng-button" onclick="deleteSelectedObject(event)"><i title="Delete selected Annotation" class="fa fa-trash"></i></button>
-                            </div>
-                        </span>
-                    </a>
-                    <a href="#">
-                        <span class="item">
-                            <div class="tool" >
-                                <button class="btn btn-danger dng-button" title="Clear Page Drawings"  onclick="clearPage()">Clear</button>
+                            <div class="tool" style="padding-left: 43px;padding-bottom: 8px;">
+                                <button class="btn btn-light dng-button" onclick="savePDF()" style="font-size: larger;padding-top: 0px;float:right;"><i title="Save" class="fa fa-save"></i></button>
                             </div>
                         </span>
                     </a>
@@ -198,7 +184,7 @@ body.active .wrapper .section{
                 <li>
                     <a href="#">
                         <span class="item">
-                            <div class="tool" style="padding-left: 40px;padding-bottom: 8px;">
+                            <div class="tool" style="padding-left: 43px;padding-bottom: 8px;">
                                 <button class="tool-button"><i class="fa fa-pencil" title="Pencil" onclick="enablePencil(event)"></i></button>
                             </div>
                         </span>
@@ -207,7 +193,7 @@ body.active .wrapper .section{
                 <li>
                     <a href="#">
                         <span class="item">
-                            <div style=" display: block;padding-left: 9px;" class="tool">
+                            <div style="padding-left: 9px;" class="tool">
                                 <button title="red" class="color-tool" style="background-color: red;"></button>
                                 <button title="blue" class="color-tool" style="background-color: blue;"></button>
                                 <button title="green" class="color-tool" style="background-color: green;"></button>
@@ -216,7 +202,6 @@ body.active .wrapper .section{
                                 <button title="teal" class="color-tool" style="background-color: teal;"></button>
                                 <button title="orange" class="color-tool" style="background-color: orange;"></button>
                                 <button title="indigo" class="color-tool" style="background-color: indigo;"></button>
-                                <button title="indigo" class="color-tool" style="background-color: pink;"></button>
                             </div>
                         </span>
                     </a>
@@ -224,7 +209,7 @@ body.active .wrapper .section{
                 <li>
                     <a href="#">
                         <span class="item">
-                            <div class="tool" style="padding-left: 40px;padding-bottom: 8px;">
+                            <div class="tool" style="padding-left: 43px;padding-bottom: 8px;">
                                 <button class="tool-button"><i class="fa fa-hand-paper-o" title="Free Hand" onclick="enableSelector(event)"></i></button>
                             </div>
                         </span>
@@ -233,7 +218,7 @@ body.active .wrapper .section{
                 <li>
                     <a href="#">
                         <span class="item">
-                            <div class="tool" style="padding-left: 40px;padding-bottom: 8px;">
+                            <div class="tool" style="padding-left: 43px;padding-bottom: 8px;">
                                 <button class="tool-button"><i class="fa fa-font" title="Add Text" onclick="enableAddText(event)"></i></button>
                             </div>
                         </span>
@@ -242,7 +227,7 @@ body.active .wrapper .section{
                 <li>
                     <a href="#">
                         <span class="item">
-                            <div class="tool" style="padding-left: 40px;padding-bottom: 8px;">
+                            <div class="tool" style="padding-left: 43px;padding-bottom: 8px;">
                                 <button class="tool-button"><i class="fa fa-long-arrow-right" title="Add Arrow" onclick="enableAddArrow(event)"></i></button>
                             </div>
                         </span>
@@ -251,7 +236,7 @@ body.active .wrapper .section{
                 <li>
                     <a href="#">
                         <span class="item">
-                            <div class="tool" style="padding-left: 40px;padding-bottom: 8px;">
+                            <div class="tool" style="padding-left: 43px;padding-bottom: 8px;">
                                 <button class="tool-button"><i class="fa fa-square-o" title="Add rectangle" onclick="enableRectangle(event)"></i></button>
                             </div>
                         </span>
@@ -260,7 +245,7 @@ body.active .wrapper .section{
                 <li>
                     <a href="#">
                         <span class="item">
-                            <div class="tool" style="padding-left: 40px;padding-bottom: 8px;">
+                            <div class="tool" style="padding-left: 43px;padding-bottom: 8px;">
                                 <button class="tool-button"><i class="fa fa-picture-o" title="Add an Image" onclick="addImage(event)"></i></button>
                             </div>
                         </span>
@@ -269,7 +254,7 @@ body.active .wrapper .section{
                 <li>
                     <a href="#">
                         <span class="item">
-                            <div class="tool" style="padding-left: 40px;padding-bottom: 8px;">
+                            <div class="tool" style="padding-left: 33px;padding-bottom: 8px;">
                                 <label for="file-input">
                                     <i class="fa fa-folder-open" style="cursor: pointer;font-size: large;" title="Choose a PDF"></i>
                                 </label>
@@ -281,7 +266,7 @@ body.active .wrapper .section{
                 <li>
                     <a href="#">
                         <span class="item">
-                            <div class="tool" style="padding-left: 40px;padding-bottom: 8px;">
+                            <div class="tool" style="padding-left: 43px;padding-bottom: 8px;">
                                 <button id="show" class="tool-button"><i class="fa fa-external-link" title="Open a Web Page PDF" ></i></button>
                             </div>
                         </span>
@@ -289,15 +274,41 @@ body.active .wrapper .section{
                 </li>
                 <li>
                     <div class="center hideform">
-                        <i id="close" style="float: right;" class="fa fa-window-close" color="red" title="Close popup" ></i></button>
+                        <button id="close" class="tool-button" style="float: right;"><i class="fa fa-window-close" color="red" title="Close popup" ></i></button>
                             Web Page URL:<br>
-                            <input id="webpageurlVal" type="text" style="width:100%;" name="webpageurl" value="" placeholder="https://">
-                            <button id="generatePDF" class="btn btn-danger dng-button"  onclick="addURL();" style="font-size: small;">Web2PDF</button>
-                            <br><div style="font-size: xx-small;">Kindly paste the web url and click button to generate PDF.</div>
+                            <input id="webpageurlVal" type="text" style="width:75%;" name="webpageurl" value="" placeholder="https://">
+                            <button id="generatePDF" class="tool-button" onclick="addURL();">Web2PDF</button>
+                            <br><div>Kindly paste the web url and click button to generate PDF.</div>
                     </div>
                 </li>   
-                
-                
+                <li>
+                    <a href="#">
+                        <span class="item">
+                            <div class="tool" style="padding-left: 43px;padding-bottom: 8px;">
+                                <button class="btn btn-danger dng-button" onclick="deleteSelectedObject(event)"><i title="Delete selected Annotation" class="fa fa-trash"></i></button>
+                            </div>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                <li>
+                    <a href="#">
+                        <span class="item">
+                            <div class="tool" style="padding-left: 33px;padding-bottom: 8px;">
+                                <button class="btn btn-danger dng-button" title="Clear Page Drawings"  onclick="clearPage()">Clear</button>
+                            </div>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="item">
+                            <div class="tool" style="padding-left: 43px;padding-bottom: 8px;">
+                                <button class="btn btn-light dng-button" onclick="savePDF()" style="font-size: larger;padding-top: 0px;float:right;"><i title="Save" class="fa fa-save"></i></button>
+                            </div>
+                        </span>
+                    </a>
+                </li>
             </ul>
         </div>
         <div id="pdf-container"></div>

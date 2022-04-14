@@ -26,7 +26,7 @@ var pdf;
 const fileload = document.getElementById('file-input').files.length;
 
 if(fileload ==0){
-    pdf = new PDFAnnotate("pdf-container",'pdf.pdf', {
+    pdf = new PDFAnnotate("pdf-container",'pdf.pdf#view=FitH', {
         onPageUpdated(page, oldData, newData) {
           console.log(page, oldData, newData);
         },

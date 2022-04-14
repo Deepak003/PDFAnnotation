@@ -23,17 +23,25 @@ var PDFAnnotate = function(container_id, url, options = {}) {
 
 	var loadingTask = pdfjsLib.getDocument(this.url);
 	loadingTask.promise.then(function (pdf) {
-		var scale = options.scale ? options.scale : 1.3;
+		//var scale = options.scale ? options.scale : 1.3;
+		
 	    inst.number_of_pages = pdf.numPages;
 
 	    for (var i = 1; i <= pdf.numPages; i++) {
 	        pdf.getPage(i).then(function (page) {
+				var unscaledViewport = page.getViewport(1);
+				var canvas = document.createElement('canvas');
+				
+		        var scale = Math.min((document.documentElement.clientHeight / unscaledViewport.viewBox[3]), (document.documentElement.clientWidth / unscaledViewport.viewBox[2]));
+				console.log('scale',scale,'un-width',unscaledViewport.viewBox[2],'un-height',unscaledViewport.viewBox[3]);
+				scale = scale-0.02;
 	            var viewport = page.getViewport({scale: scale});
-	            var canvas = document.createElement('canvas');
+	            
 	            document.getElementById(inst.container_id).appendChild(canvas);
 	            canvas.className = 'pdf-canvas';
 	            canvas.height = viewport.height;
 	            canvas.width = viewport.width;
+				console.log('canvas.height',document.documentElement.clientHeight,'canvas.width',document.documentElement.clientWidth);
 	            context = canvas.getContext('2d');
 
 	            var renderContext = {
