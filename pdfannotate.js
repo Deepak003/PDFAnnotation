@@ -23,7 +23,7 @@ var PDFAnnotate = function(container_id, url, options = {}) {
 
 	var loadingTask = pdfjsLib.getDocument(this.url);
 	loadingTask.promise.then(function (pdf) {
-		//var scale = options.scale ? options.scale : 1.3;
+		var scale = options.scale ? options.scale : 1.3;
 		
 	    inst.number_of_pages = pdf.numPages;
 
@@ -31,9 +31,11 @@ var PDFAnnotate = function(container_id, url, options = {}) {
 	        pdf.getPage(i).then(function (page) {
 				var unscaledViewport = page.getViewport(1);
 				var canvas = document.createElement('canvas');
-				
+				var viewport = page.getViewport(10);//paint with zoom 10X to reach "high definition" PDF drawing
+				canvas.width = viewport.width;//keep high definition drawing canvas
+				canvas.style.width = "100%";
 		        var scale = Math.min((document.documentElement.clientHeight / unscaledViewport.viewBox[3]), (document.documentElement.clientWidth / unscaledViewport.viewBox[2]));
-				console.log('scale',scale,'un-width',unscaledViewport.viewBox[2],'un-height',unscaledViewport.viewBox[3]);
+				//console.log('scale',scale,'un-width',unscaledViewport.viewBox[2],'un-height',unscaledViewport.viewBox[3]);
 				scale = scale-0.02;
 	            var viewport = page.getViewport({scale: scale});
 	            
@@ -63,9 +65,11 @@ var PDFAnnotate = function(container_id, url, options = {}) {
 	});
 
 	this.initFabric = function () {
+		console.log('init');
 		var inst = this;
 		let canvases = $('#' + inst.container_id + ' canvas')
 	    canvases.each(function (index, el) {
+			console.log('canvases.each');
 	        var background = el.toDataURL("image/png");
 	        var fabricObj = new fabric.Canvas(el.id, {
 	            freeDrawingBrush: {
@@ -75,20 +79,25 @@ var PDFAnnotate = function(container_id, url, options = {}) {
 	        });
 			inst.fabricObjects.push(fabricObj);
 			if (typeof options.onPageUpdated == 'function') {
+				console.log('options.onPageUpdated');
 				fabricObj.on('object:added', function() {
+					console.log('object:added');
 					var oldValue = Object.assign({}, inst.fabricObjectsData[index]);
-					inst.fabricObjectsData[index] = fabricObj.toJSON()
-					options.onPageUpdated(index + 1, oldValue, inst.fabricObjectsData[index]) 
+					inst.fabricObjectsData[index] = fabricObj.toJSON();
+					console.log('index',index);
+					options.onPageUpdated(index , oldValue, inst.fabricObjectsData[index]) 
 				})
 			}
 	        fabricObj.setBackgroundImage(background, fabricObj.renderAll.bind(fabricObj));
+			console.log('fabricObj.upperCanvasEl',fabricObj.upperCanvasEl);
 	        $(fabricObj.upperCanvasEl).click(function (event) {
+				console.log('in click');
 	            inst.active_canvas = index;
 	            inst.fabricClickHandler(event, fabricObj);
 			});
 			fabricObj.on('after:render', function () {
 				inst.fabricObjectsData[index] = fabricObj.toJSON()
-				fabricObj.off('after:render')
+				fabricObj.off('after:render');
 			})
 
 			if (index === canvases.length - 1 && typeof options.ready === 'function') {
@@ -98,15 +107,19 @@ var PDFAnnotate = function(container_id, url, options = {}) {
 	}
 
 	this.fabricClickHandler = function(event, fabricObj) {
+		console.log('clicked');
 		var inst = this;
 	    if (inst.active_tool == 2) {
+			console.log('fabricClickHandler...');
 	        var text = new fabric.IText('Sample text', {
-	            left: event.clientX - fabricObj.upperCanvasEl.getBoundingClientRect().left,
-	            top: event.clientY - fabricObj.upperCanvasEl.getBoundingClientRect().top,
+	            left: 500,
+	            top: window.scrollY,
 	            fill: inst.color,
 	            fontSize: inst.font_size,
 	            selectable: true
 	        });
+			console.log('left', event.clientX - fabricObj.upperCanvasEl.getBoundingClientRect().left);
+			console.log('top', event.clientY - fabricObj.upperCanvasEl.getBoundingClientRect().top);
 	        fabricObj.add(text);
 	        inst.active_tool = 0;
 	    }
@@ -136,8 +149,10 @@ PDFAnnotate.prototype.enablePencil = function () {
 PDFAnnotate.prototype.enableAddText = function () {
 	var inst = this;
 	inst.active_tool = 2;
+	console.log('inst.fabricObjects.length',inst.fabricObjects.length);
 	if (inst.fabricObjects.length > 0) {
 	    $.each(inst.fabricObjects, function (index, fabricObj) {
+			console.log('hi-index',index);
 	        fabricObj.isDrawingMode = false;
 	    });
 	}

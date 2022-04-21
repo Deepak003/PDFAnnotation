@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="./pdfannotate.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Document</title>
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
@@ -171,7 +171,7 @@ body.active .wrapper .section{
         </div>
         <div class="sidebar">
             <div class="profile">
-                <img src="./PDF-ANNOTATE.png" alt="profile_picture">
+                <img src="./PDF-ANNOTATE-ORIG.png" alt="profile_picture">
                 <h3></h3>
             </div>
             <ul>
@@ -190,7 +190,7 @@ body.active .wrapper .section{
                         <span class="item">
                             <div class="tool" style="padding-top: 10px;;padding-bottom: 8px;">
                                 <label for=""><span class="icon"><i style="font-size: large;color: initial;" class="fas fa-pencil-ruler"></i></span></label>
-                                <input type="number" class="form-control text-right" value="1" id="brush-size" max="108">
+                                <input type="number" class="form-control text-right" value="1" id="font-size" max="108">
                             </div>
                         </span>
                     </a>
@@ -216,7 +216,7 @@ body.active .wrapper .section{
                                 <button title="teal" class="color-tool" style="background-color: teal;"></button>
                                 <button title="orange" class="color-tool" style="background-color: orange;"></button>
                                 <button title="indigo" class="color-tool" style="background-color: indigo;"></button>
-                                <button title="indigo" class="color-tool" style="background-color: pink;"></button>
+                                <button title="indigo" class="color-tool" style="background-color: black;"></button>
                             </div>
                         </span>
                     </a>
@@ -234,7 +234,7 @@ body.active .wrapper .section{
                     <a href="#">
                         <span class="item">
                             <div class="tool" style="padding-left: 40px;padding-bottom: 8px;">
-                                <button class="tool-button"><i class="fa fa-font" title="Add Text" onclick="enableAddText(event)"></i></button>
+                                <button id="add-text" class="tool-button"><i class="fa fa-font" title="Add Text" onclick="enableAddText(event)"></i></button>
                             </div>
                         </span>
                     </a>

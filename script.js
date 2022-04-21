@@ -24,9 +24,9 @@ function addURL(event){
 
 var pdf;
 const fileload = document.getElementById('file-input').files.length;
-
+console.log()
 if(fileload ==0){
-    pdf = new PDFAnnotate("pdf-container",'pdf.pdf#view=FitH', {
+    pdf = new PDFAnnotate("pdf-container",'pdf.pdf', {
         onPageUpdated(page, oldData, newData) {
           console.log(page, oldData, newData);
         },
@@ -44,7 +44,7 @@ function loadPDFWebURL(url){
         console.log(page, oldData, newData);
         },
         ready() {
-        console.log("Plugin initialized successfully");
+          console.log("Plugin initialized successfully");
         },
         scale: 1.5,
         pageImageCompression: "MEDIUM", // FAST, MEDIUM, SLOW(Helps to control the new PDF file size)
@@ -89,6 +89,7 @@ function enablePencil(event) {
 function enableAddText(event) {
     event.preventDefault();
     changeActiveTool(event);
+    console.log('enableAddText....')
     pdf.enableAddText();
 }
 
@@ -169,4 +170,18 @@ $(function () {
         var font_size = $(this).val();
         pdf.setFontSize(font_size);
     });
+  
+    window.addEventListener("scroll", (event) => {
+        let scroll = window.scrollY;
+        console.log('scroll',scroll);
+    });
+    window.addEventListener('click', printMousePos, true);
+    function printMousePos(e){
+
+        window.cursorX = e.pageX;
+        window.cursorY= e.pageY;
+        console.log( "pageX: " + cursorX +",pageY: " + cursorY );
+    }
 });
+
+
